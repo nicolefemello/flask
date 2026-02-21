@@ -8,17 +8,25 @@
     />
   </head>
   <body>
-    <nav>
-      <a href="/">Home</a> | <a href="/login">Login</a> |
-      <a href="/cadastro">Cadastrar</a>
-    </nav>
-    <h1>Últimas Notícias</h1>
-    {% for id, info in noticias.items() %}
-    <div class="noticia-card">
-      <h2>{{ info.titulo }}</h2>
-      <p>{{ info.resumo }}</p>
-      <a href="{{ url_for('visualizar_noticia', id=id) }}">Ler mais</a>
-    </div>
-    {% endfor %}
+    <header>
+      <nav>
+        <a href="/">Home</a> | <a href="/login">Login</a> |
+        <a href="/cadastro">Cadastrar</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Últimas Notícias</h1>
+      {% for id, info in noticias.items() %}
+      <div class="noticia-card">
+        <h2>{{ info.titulo }}</h2>
+        <p>{{ info.resumo }}</p>
+        <a href="{{ url_for('visualizar_noticia', id=id) }}">Ler mais</a>
+      </div>
+      {% endfor %}
+    </main>
+
+    <footer>
+      <p>Desenvolvido por nicolefemello, &copy;2026</p>
   </body>
 </html>
