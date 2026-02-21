@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+  <head>
+    <title>{{ noticia.titulo }}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <a href="/">⬅ Voltar</a>
+    <h1>{{ noticia.titulo }}</h1>
+    <p>{{ noticia.conteudo }}</p>
+  </body>
+</html>

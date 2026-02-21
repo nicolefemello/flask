@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To do list</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+      </nav>
+    </header>
+
+    <main>
+      <h2>Minhas Tarefas</h2>
+      <ul>
+        {% for task in tasks %}
+        <li>{{ task.title }} - {{ task.description }}</li>
+        {% endfor %}
+      </ul>
+    </main>
+
+    <footer>
+      <p>Desenvolvido por nicolefemello, &copy;2026</p>
+    </footer>
+  </body>
+</html>
