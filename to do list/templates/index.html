@@ -4,21 +4,60 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To do list</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
   </head>
   <body>
     <header>
-      <nav>
-        <a href="/">Home</a>
-      </nav>
+      <h1>Registro de atividades</h1>
     </header>
 
     <main>
-      <h2>Minhas Tarefas</h2>
+      <p class="subtitle">ATIVIDADES REGISTRADAS</p>
       <ul>
-        {% for task in tasks %}
-        <li>{{ task.title }} - {{ task.description }}</li>
+        {% for task in tasks | sort(attribute='status', reverse=True) %} {% set
+        cor_status = 'red' if task.status == 'Pendente' else 'green' %} {% set
+        fundo_item = 'white' if task.status == 'Pendente' else 'gray' %}
+
+        <li style="background-color: {{ fundo_item }}">
+          <div class="status" style="background-color: {{ cor_status }}"></div>
+          <div>
+            <p class="task-title">{{ task.title }}</p>
+            <p class="task-description">{{ task.description }}</p>
+          </div>
+          <div class="actions">
+            <a href="{{ url_for('complete_task', task_id=task.id) }}">
+              <button
+                class="change-status"
+                style="background-color: #dadada; cursor: pointer"
+              >
+                <span class="material-symbols-outlined">
+                  {{ 'check_circle' if task.status == 'Pendente' else
+                  'do_not_disturb_on' }}
+                </span>
+              </button>
+            </a>
+            <a href="{{ url_for('delete_one_task', task_id=task.id) }}">
+              <button
+                class="change-status"
+                style="background-color: #e74c3c; color: white; cursor: pointer"
+              >
+                <span class="material-symbols-outlined"> delete </span>
+              </button>
+            </a>
+          </div>
+        </li>
         {% endfor %}
       </ul>
+      <button class="add-btn" onclick="location.href = '/add_task'">
+        <span class="material-symbols-outlined"> add </span> Adicionar Atividade
+      </button>
     </main>
 
     <footer>

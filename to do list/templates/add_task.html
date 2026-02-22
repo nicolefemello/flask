@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To do list</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>Registro de atividades</h1>
+    </header>
+
+    <main>
+      <p class="subtitle">REGISTRAR NOVA ATIVIDADE</p>
+      <form action="/add_task" method="post">
+        <label for="title">Título:</label><br />
+        <input type="text" id="title" name="title" required /><br />
+        <label for="description">Descrição:</label><br />
+        <textarea id="description" name="description" required></textarea><br />
+        <input class="btn-submit" type="submit" value="Adicionar Atividade" />
+      </form>
+    </main>
+
+    <footer>
+      <p>Desenvolvido por nicolefemello, &copy;2026</p>
+    </footer>
+  </body>
+</html>
